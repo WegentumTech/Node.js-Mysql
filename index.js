@@ -1,24 +1,15 @@
-import mysql from "mysql2";  // here i am inporting mysql2
+import con from "./initDB.js";
 
 
 
 
-// Below i am creating connection with database
+// con.connect(function(err) {
+//   if (err) console.log(err)
+//   else{
+//     console.log("Connected!");
 
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "suraj",
-    password: "Suraj@786",
-    insecureAuth : true,
-    database: "mydb"
-  });
-
-
-
-
-
-
-
+//   }
+// });
 
 
 
@@ -44,7 +35,7 @@ var con = mysql.createConnection({
   // con.connect(function(err) {
   //   if (err) throw err;
   //   console.log("Connected!");
-  //   var sql = "CREATE TABLE customer (name VARCHAR(255), address VARCHAR(255))";
+  //   var sql = "CREATE TABLE suraj (name VARCHAR(255), address VARCHAR(255))";
   //   con.query(sql, function (err, result) {
   //     if (err) throw err;
   //     console.log("Table created");
@@ -56,21 +47,21 @@ var con = mysql.createConnection({
   // Inserting value
 
 
-  // con.connect(function(err) {
-  //   if (err) throw err;
-  //   console.log("Connected!");
-  //   var sql = "INSERT INTO customers (name, address) VALUES ?";
-  //   var values =[
-  //     ['name', 'suraj'],
-  //     ['name', 'singh'],
-  //     ['name', 'sultan']
-  //   ];
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    var sql = "INSERT INTO suraj (name, address,some,some) VALUES ?";
+    var values =[
+      ['name', 'suraj','something','some'],
+      ['name', 'singh','something','some'],
+      ['name', 'sultan','something','some']
+    ];
     
-  //   con.query(sql, [values], function (err, result) {
-  //     if (err) throw err;
-  //     console.log("Number of records inserted: " + result.affectedRows);
-  //   });
-  // });
+    con.query(sql, [values], function (err, result) {
+      if (err) throw err;
+      console.log("Number of records inserted: " + result.affectedRows);
+    });
+  });
 
 
 
